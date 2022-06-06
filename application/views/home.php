@@ -25,30 +25,30 @@ tr:nth-child(even) {
 </head>
 <body>
 <?php 
- $this->load->library('session');
+
  $login_session = $this->session->userdata('userlogin');
  //$username = $this->session->userdata('userlogin');
- 
+ error_reporting(0);
 ?>
 
-<h3><b>Hello ,<?php echo $login_session['Email'];?></b> <a href="<?= site_url('welcome/logout') ?>" ><button  style="float: right;" type="submit" class="btn btn-success">LOGOUT</button></h3></a><hr/>
+<h3><b></b> <a href="<?= site_url('welcome/logout') ?>" ><button  style="float: right;" type="submit" class="btn btn-success">LOGOUT</button></h3></a><hr/>
 
 
 <h2>LIST USER</h2>
 
 <table>
   <tr>
-    <th>Title</th>
-    <th>Firstname</th>
-    <th>Lastname</th>
-	<th>Image</th>
-	<th>Action</th>
+    <th>Username</th>
+    <th>Name</th>
+    <th>Password</th>
+    <th>Role</th>
+	  <th>Action</th>
   </tr>
   <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Maria Anders</td>
-    <td>Germany</td>
-	<td >Germany</td>
+    <td>admin_satu</td>
+    <td>Admin Satu</td>
+    <td>12345</td>
+	<td >Admin</td>
 	<td><button type="button" class="btn btn-success">UPDATE</button> | <button type="button" class="btn btn-danger">DELETE</button></td>
   </tr>
 </table>

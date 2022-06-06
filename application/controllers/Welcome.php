@@ -19,11 +19,9 @@ class Welcome extends CI_Controller {
 	 * @see https://codeigniter.com/userguide3/general/urls.html
 	 */
 
-	var $API ="";
     
     function __construct() {
         parent::__construct();
-        $this->API="https://dummyapi.io/data/v1/user";
         $this->load->library('session');
         $this->load->library('curl');
         $this->load->helper('form');
@@ -38,8 +36,8 @@ class Welcome extends CI_Controller {
 		
 	
 		
-		$this->form_validation->set_rules('email','Email',
-	   'trim|required|callback_email_check');
+		$this->form_validation->set_rules('username','Username',
+	   'trim|required|callback_username_check');
 		$this->form_validation->set_rules('password','Password',
 	   'trim|required|callback_password_check');
 		if($this->form_validation->run()==false){
@@ -53,7 +51,7 @@ class Welcome extends CI_Controller {
 		
 		}else{
 		 $user_session=array(
-		  'Email'      => $this->input->post('email'),
+		  'Username'      => $this->input->post('username'),
 		  'Password'      => $this->input->post('password'),
 		  'is_logged_in'  => 1
 		 );
@@ -62,16 +60,16 @@ class Welcome extends CI_Controller {
 		}
 	   
 	   }
-	   public function email_check($str)
+	   public function username_check($str)
 	   {
-			   if ($str == 'tegarpribadi@rumahweb.co.id')
+			   if ($str == 'admin_satu')
 			   {
 			   return TRUE;
 					
 			   }
 			   else
 			   {
-				$this->form_validation->set_message('email_check', 'email NOT "tegarpribadi@rumahweb.co.id"');
+				$this->form_validation->set_message('username_check', 'username NOT "admin_satu"');
 				return FALSE;
 			   }
 	   }
@@ -92,8 +90,8 @@ class Welcome extends CI_Controller {
 	{
 	
 
-		$data['datauser'] = json_decode($this->curl->simple_get($this->API.'/welcome'));
-        $this->load->view('home',$data);
+		
+        $this->load->view('home');
 	}
 
 	
